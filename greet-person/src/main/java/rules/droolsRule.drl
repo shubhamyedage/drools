@@ -1,0 +1,22 @@
+package rules
+import models.Person
+
+
+rule "Good morning"
+when
+person: models.Person(time >= 0, time <= 12)
+then
+person.setGreet("Good morning " + person.getName());
+end
+rule "Good afternoon"
+when
+person: models.Person(time > 12, time <= 16)
+then
+person.setGreet("Good afternoon " + person.getName());
+end
+rule "Good night"
+when
+person: models.Person(time > 16, time <= 24)
+then
+person.setGreet("Good night " + person.getName());
+end
